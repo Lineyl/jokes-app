@@ -6,8 +6,15 @@
       </section>
 
       <section class="flex flex-col items-center flex-auto">
-        <CategoriesList class="flex-initial" />
-        <Joke class="flex-auto py-8 max-w-[40%]" />
+        <CategoriesList
+          v-model="selectedCategories"
+          class="flex-initial"
+        />
+
+        <Joke
+          :selected-categories="selectedCategories"
+          class="flex-auto py-8 max-w-[40%]"
+        />
       </section>
 
       <section class="flex-initial text-center text-muted-color-emphasis py-4">
@@ -18,9 +25,11 @@
 </template>
 
 <script setup lang="ts">
-
+import { reactive } from 'vue';
 
 import CategoriesList from '@/components/CategoriesList.vue';
 import Joke from '@/components/Joke.vue';
+
+const selectedCategories = reactive<string[]>([]);
 </script>
 
